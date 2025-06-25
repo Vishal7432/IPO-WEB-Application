@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "company": "Nova Agritech Ltd.",
+    "priceBand": "₹39 - ₹41",
+    "openDate": "2025-06-20",
+    "closeDate": "2025-06-22",
+    "issueSize": "143.81 Cr",
+    "issueType": "Book Built",
+    "listingDate": "2025-06-30"
+  },
+  {
+    "id": 2,
+    "company": "EPACK Durable Ltd.",
+    "priceBand": "₹218 - ₹230",
+    "openDate": "2025-06-25",
+    "closeDate": "2025-06-27",
+    "issueSize": "640.05 Cr",
+    "issueType": "Book Built",
+    "listingDate": "2025-07-03"
+  },
+  {
+    "id": 3,
+    "company": "Boat",
+    "priceBand": "Not Issues",
+    "openDate": "Not Issues",
+    "closeDate": "Not Issues",
+    "issueSize": "220.05 Cr",
+    "issueType": "Book Built",
+    "listingDate": "Not Issues"
+  },
+  {
+    "id": 4,
+    "company": "OYO",
+    "priceBand": "Not Issues",
+    "openDate": "Not Issues",
+    "closeDate": "Not Issues",
+    "issueSize": "850.05 Cr",
+    "issueType": "Book Built",
+    "listingDate": "Not Issues"
+  },
+  {
+    "id": 5,
+    "company": "RK Swamy Ltd.",
+    "priceBand": "Not Issues",
+    "openDate": "Not Issues",
+    "closeDate": "Not Issues",
+    "issueSize": "220.05 Cr",
+    "issueType": "Book Built",
+    "listingDate": "Not Issues"
+  }
+]
