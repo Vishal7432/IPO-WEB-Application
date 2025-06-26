@@ -1,46 +1,80 @@
 import React, { useState } from "react";
+import "./Login.css"; // CSS styling is separate
 
-export default function LoginForm({ onClose, onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = () => {
-    // yaha validation ya API call laga sakte ho
-    if (email && password) {
-      onLogin(); // notify parent
-      onClose(); // close the modal
-    } else {
-      alert("Please enter email and password");
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("Logging in...");
+
+    try {
+      const res = await fetch("http://localhost:5173/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem("token", data.token);
+        setMessage("Login successful!");
+      } else {
+        setMessage(data.error || "Login failed");
+      }
+    } catch {
+      setMessage("Server error");
     }
   };
 
   return (
-    <div className="modal d-block" tabIndex="-1" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
-      <div className="modal-dialog">
-        <div className="modal-content p-4">
-          <h5 className="mb-3">Login</h5>
+    <div className="login-container">
+      <div className="login-card">
+        <h2 className="logo">BLUESTOCK</h2>
+        <form onSubmit={handleSubmit}>
+          <label>Email Address</label>
           <input
             type="email"
-            className="form-control mb-2"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            placeholder="example@gmail.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
+
+          <label>Password</label>
           <input
             type="password"
-            className="form-control mb-3"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            placeholder="••••••••"
+            value={formData.password}
+            onChange={handleChange}
+            required
           />
-          <button className="btn btn-success me-2" onClick={handleSubmit}>
-            Submit
+
+          <div className="actions">
+            <div className="remember">🔒 Remember me</div>
+            <a href="#" className="forgot">
+              Forgot Password?
+            </a>
+          </div>
+
+          <button type="submit" className="login-btn">
+            Login
           </button>
-          <button className="btn btn-secondary" onClick={onClose}>
-            Cancel
-          </button>
-        </div>
+        </form>
+        <p className="bottom-msg">
+          Don't have an account? <a href="#">Sign Up</a>
+        </p>
+        {message && <p className="status">{message}</p>}
       </div>
     </div>
   );
-}
+};
+
+export default Login;

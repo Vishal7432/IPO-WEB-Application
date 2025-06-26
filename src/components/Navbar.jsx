@@ -31,11 +31,7 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link active " href="#">
-                Home
-              </a>
-            </li>
+            <li className="nav-item"></li>
             <li className="nav-item">
               <a className="nav-link" href="#">
                 About

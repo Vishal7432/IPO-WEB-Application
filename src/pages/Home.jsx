@@ -16,8 +16,12 @@ export default function Home() {
   if (loading) return <div>Loading IPOs...</div>;
 
   return (
-    <div className=" container mt-5">
-      <h2 className="text-center mb-4">IPO Calendar</h2>
+    <div className=" container mt-3">
+      <h2 className="text-left mb-2">UPCOMING IPO..</h2>
+      <p className="">
+        Companies that have filled for an IPO with SEBI. Few details might be
+        disclosed by the companies later
+      </p>
       <div className=" row">
         {ipos.map((ipo, index) => (
           <div className="col-sm-12 col-md-4" key={index}>
